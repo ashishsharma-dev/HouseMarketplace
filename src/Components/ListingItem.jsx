@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import { ReactComponent as DeleteIcon } from "../assets/svg/deleteIcon.svg";
+import { ReactComponent as EditIcon } from "../assets/svg/editIcon.svg";
 import bedIcon from "../assets/svg/bedIcon.svg";
 import bathtubIcon from "../assets/svg/bathtubIcon.svg";
 
-const ListingItem = ({ listing, id, onDelete }) => {
+const ListingItem = ({ listing, id, onEdit, onDelete }) => {
   // console.log(listing);
   return (
     <li className="categoryListing">
@@ -18,7 +19,7 @@ const ListingItem = ({ listing, id, onDelete }) => {
         />
 
         <div className="categoryListingDetails">
-          <p className="categoryListingLocation">{listing.location}</p>
+          <p className="categoryListingLocation">{listing.address}</p>
           <p className="categoryListingName">{listing.name}</p>
 
           <p className="categoryListingPrice">
@@ -55,6 +56,8 @@ const ListingItem = ({ listing, id, onDelete }) => {
           onClick={() => onDelete(listing.id, listing.name)}
         />
       )}
+
+      {onEdit && <EditIcon className="editIcon" onClick={() => onEdit(id)} />}
     </li>
   );
 };
